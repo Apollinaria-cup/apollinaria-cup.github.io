@@ -26,6 +26,7 @@
             overflow-x: hidden;
         }
 
+        /* Шапка */
         header {
             position: fixed;
             top: 0; width: 100%;
@@ -60,6 +61,7 @@
         }
         nav a:hover::after, nav a.active::after { width: 100%; }
 
+        /* Переключатель больших окон (Главная vs Меню) */
         .page-window { display: none; margin-top: 140px; animation: fadeIn 0.4s ease-in-out forwards; }
         .page-window.active { display: block; }
 
@@ -67,67 +69,36 @@
 
         .main-container { max-width: 900px; margin: 0 auto; padding: 20px; }
 
-        /* Элегантная CSS-заглушка вместо ломающихся ссылок на фото */
+        /* Слайдер с реальными фото Mamie из Яндекс Карт */
         .slider-wrapper {
-            position: relative; width: 100%; height: 400px;
+            position: relative; width: 100%; height: 450px;
             border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); margin-bottom: 40px;
         }
         .slider { display: flex; width: 100%; height: 100%; transition: transform 0.5s ease-in-out; }
-        .slide { 
-            min-width: 100%; height: 100%; 
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            background: linear-gradient(135deg, #1d3557 0%, #457b9d 100%);
-            color: #ffffff; text-align: center; padding: 20px; box-sizing: border-box;
+        .slide { min-width: 100%; height: 100%; position: relative; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; }
+        .slide-caption {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: #fff; padding: 30px 20px 20px; box-sizing: border-box;
         }
-        .slide h3 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 10px; }
-        .slide p { font-size: 1.1rem; max-width: 600px; opacity: 0.9; }
+        .slide-caption h3 { margin: 0 0 5px 0; font-family: 'Playfair Display', serif; font-size: 1.8rem; }
+        .slide-caption p { margin: 0; font-size: 0.95rem; opacity: 0.9; }
         
         .slider-btn {
             position: absolute; top: 50%; transform: translateY(-50%);
             background: rgba(252, 251, 247, 0.9); border: none; width: 45px; height: 45px;
             border-radius: 50%; color: var(--navy-blue); font-size: 1.5rem; font-weight: bold;
             cursor: pointer; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; z-index: 10;
-        }
-        .slider-btn:hover { background: var(--navy-blue); color: #fff; }
-        .prev { left: 20px; }
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s
 Error 404 (Not Found)!!1
 googleapis.com
 
 
-<div class="slider" id="slider">
-                    <div class="slide">
-                        <h3>Французский Прованс</h3>
-                        <p>Эстетичный интерьер с винтажной европейской мебелью и мягким камерным светом в самом сердце Москвы.</p>
-                    </div>
-                    <div class="slide">
-                        <h3>Lucky Group</h3>
-                        <p>Ресторанный проект премиум-класса на Большой Никитской, сочетающий гастрономию и безупречный сервис.</p>
-                    </div>
-                    <div class="slide">
-                        <h3>Открытая кухня</h3>
-                        <p>Наблюдайте за процессом создания кулинарных шедевров французской и итальянской кухонь от лучших шефов.</p>
-                    </div>
-                    <div class="slide">
-                        <h3>Винтажный шарм</h3>
-                        <p>Каждая деталь — от старинных тарелок до текстиля — привезена с европейских блошиных рынков.</p>
-                    </div>
-                    <div class="slide">
-                        <h3>Свежая выпечка</h3>
-                        <p>Собственный ремесленный хлеб, хрустящие круассаны и изящные десерты, обновляемые каждое утро.</p>
-                    </div>
-                    <div class="slide">
-                        <h3>Живая атмосфера</h3>
-                        <p>Идеальное место как для неспешного бранча, так и для праздничного светского ужина.</p>
-                    </div>
-                    <div class="slide">
-                        <h3>Уютные детали</h3>
-                        <p>Теплый прием, живые цветы на столах и атмосфера уютного загородного дома во Франции.</p>
-                    </div>
-                </div>.n
-
-
-ext { right: 20px; }
+z-index: 10;
+        }
+        .slider-btn:hover { background: var(--navy-blue); color: #fff; }
+        .prev { left: 20px; } .next { right: 20px; }
 
         .slider-dots {
             position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
@@ -136,9 +107,10 @@ ext { right: 20px; }
         .dot { width: 10px; height: 10px; background: rgba(255,255,255,0.4); border-radius: 50%; cursor: pointer; transition: 0.3s; }
         .dot.active { background: #ffffff; width: 24px; border-radius: 5px; }
 
+        /* Блоки контента */
         .content-section {
             background: #ffffff; border-radius: 16px; padding: 40px;
-            box-shadow: var(--shadow); margin-bottom: 30px; border: 1px solid rgba(29, 53, 87, 0.05);
+            box-shadow: var(--shadow); margin-bottom: 40px; border: 1px solid rgba(29, 53, 87, 0.05);
         }
         .content-section h2 {
             font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--navy-blue);
@@ -154,6 +126,7 @@ ext { right: 20px; }
         }
         .btn-navy:hover { background-color: var(--accent-blue); transform: translateY(-2px); }
 
+        /* Отзывы */
         .review-input, .review-textarea {
             width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid rgba(29, 53, 87, 0.2);
             border-radius: 6px; font-family: inherit; box-sizing: border-box; background: #fff;
@@ -162,6 +135,7 @@ ext { right: 20px; }
         .review-item:last-child { border: none; }
         .review-name { font-weight: 600; color: var(--navy-blue); margin-bottom: 5px; }
 
+        /* Окно Меню */
         .menu-container { max-width: 900px; margin: 0 auto; padding: 20px 20px 60px; }
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         
@@ -169,11 +143,7 @@ ext { right: 20px; }
             background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow);
             border: 1px solid rgba(29, 53, 87, 0.05); display: flex; flex-direction: column;
         }
-        .menu-photo-placeholder {
-            height: 180px; background: linear-gradient(135deg, #f1faee 0%, #a8dadc 100%);
-            display: flex; align-items: center; justify-content: center;
-            color: var(--navy-blue); font-family: 'Playfair Display', serif; font-weight: bold; font-size: 1.1rem;
-        }
+        .menu-card img { width: 100%; height: 220px; object-fit: cover; }
         .menu-card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
         .menu-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; gap: 10px; }
         .menu-card-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--navy-blue); margin: 0; }
@@ -199,6 +169,28 @@ ext { right: 20px; }
     <div id="window-main" class="page-window active">
         <div class="main-container">
             
-            <!-- Слайдер-презентация -->
+            <!-- Слайдер с реальными фото бистро Mamie -->
             <div class="slider-wrapper">
                 <button class="slider-btn prev" onclick="moveSlide(-1)">❮</button>
+                <div class="slider" i
+
+
+d="slider">
+                    <div class="slide">
+                        <img src="https://yandex.net" alt="Интерьер Mamie 1">
+                        <div class="slide-caption"><h3>Французский Прованс</h3><p>Эстетичный интерьер с винтажной европейской мебелью в самом сердце Москвы.</p></div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://yandex.net" alt="Интерьер Mamie 2">
+                        <div class="slide-caption"><h3>Атмосфера Lucky Group</h3><p>Уникальный ресторанный проект на Большой Никитской с безупречным сервисом.</p></div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://yandex.net" alt="Интерьер Mamie 3">
+                        <div class="slide-caption"><h3>Открытая кухня</h3><p>Наблюдайте за процессом создания кулинарных шедевров французской кухни.</p></div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://yandex.net" alt="Интерьер Mamie 4">
+                        <div class="slide-caption"><h3>Винтажный шарм</h3><p>Уникальная антикварная посуда, привезенная с европейских рынков.</p></div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://yandex.net" alt="Интерьер Mamie 5">;
