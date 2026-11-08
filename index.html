@@ -4,193 +4,220 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAMIE | Городское бистро в Москве</title>
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-white: #fcfbf7; 
-            --navy-blue: #1d3557; 
-            --accent-blue: #457b9d; 
-            --text-dark: #2b2d42;
-            --text-muted: #6c757d;
-            --shadow: 0 10px 30px rgba(29, 53, 87, 0.08);
-        }
-
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-white);
-            color: var(--text-dark);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background-color: #fcfbf7; 
+            color: #2b2d42;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
         }
 
-        /* Шапка */
         header {
             position: fixed;
-            top: 0; width: 100%;
-            background: rgba(252, 251, 247, 0.96);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(29, 53, 87, 0.1);
+            top: 0; left: 0; width: 100%;
+            background: #fcfbf7;
+            border-bottom: 1px solid #1d3557;
             z-index: 1000;
-            display: flex; flex-direction: column; align-items: center; padding: 15px 0;
+            text-align: center;
+            padding: 15px 0;
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: bold;
             letter-spacing: 4px;
-            color: var(--navy-blue);
+            color: #1d3557;
             margin-bottom: 5px;
-            text-decoration: none;
-            cursor: pointer;
         }
 
-        nav { display: flex; gap: 35px; margin-top: 5px; }
+        nav { display: flex; justify-content: center; gap: 20px; margin-top: 5px; }
         nav a {
-            color: var(--text-dark); text-decoration: none; font-weight: 600;
-            font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase;
-            transition: 0.3s; position: relative; cursor: pointer;
+            color: #2b2d42; text-decoration: none; font-weight: bold;
+            font-size: 0.85rem; text-transform: uppercase; cursor: pointer;
+            padding-bottom: 4px;
         }
-        nav a:hover, nav a.active { color: var(--navy-blue); }
-        nav a::after {
-            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
-            background-color: var(--navy-blue); transition: 0.3s;
+        nav a:hover, nav a.active { color: #457b9d; border-bottom: 2px solid #1d3557; }
+
+        /* Все блоки видны сразу при прокрутке */
+        .main-container { max-width: 600px; margin: 120px auto 40px; padding: 0 20px; }
+
+        .promo-block {
+            background: linear-gradient(135deg, #1d3557 0%, #457b9d 100%);
+            color: #ffffff;
+            border-radius: 12px;
+            padding: 35px 20px;
+            text-align: center;
+            margin-bottom: 25px;
         }
-        nav a:hover::after, nav a.active::after { width: 100%; }
+        .promo-block h3 { font-size: 1.6rem; margin: 0 0 10px 0; }
+        .promo-block p { font-size: 0.95rem; margin: 0; opacity: 0.9; }
 
-        /* Переключатель больших окон (Главная vs Меню) */
-        .page-window { display: none; margin-top: 140px; animation: fadeIn 0.4s ease-in-out forwards; }
-        .page-window.active { display: block; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-
-        .main-container { max-width: 900px; margin: 0 auto; padding: 20px; }
-
-        /* Слайдер с реальными фото Mamie из Яндекс Карт */
-        .slider-wrapper {
-            position: relative; width: 100%; height: 450px;
-            border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); margin-bottom: 40px;
-        }
-        .slider { display: flex; width: 100%; height: 100%; transition: transform 0.5s ease-in-out; }
-        .slide { min-width: 100%; height: 100%; position: relative; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; }
-        .slide-caption {
-            position: absolute; bottom: 0; left: 0; width: 100%;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
-            color: #fff; padding: 30px 20px 20px; box-sizing: border-box;
-        }
-        .slide-caption h3 { margin: 0 0 5px 0; font-family: 'Playfair Display', serif; font-size: 1.8rem; }
-        .slide-caption p { margin: 0; font-size: 0.95rem; opacity: 0.9; }
-        
-        .slider-btn {
-            position: absolute; top: 50%; transform: translateY(-50%);
-            background: rgba(252, 251, 247, 0.9); border: none; width: 45px; height: 45px;
-            border-radius: 50%; color: var(--navy-blue); font-size: 1.5rem; font-weight: bold;
-            cursor: pointer; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s
-Error 404 (Not Found)!!1
-googleapis.com
-
-
-z-index: 10;
-        }
-        .slider-btn:hover { background: var(--navy-blue); color: #fff; }
-        .prev { left: 20px; } .next { right: 20px; }
-
-        .slider-dots {
-            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-            display: flex; gap: 8px; z-index: 10;
-        }
-        .dot { width: 10px; height: 10px; background: rgba(255,255,255,0.4); border-radius: 50%; cursor: pointer; transition: 0.3s; }
-        .dot.active { background: #ffffff; width: 24px; border-radius: 5px; }
-
-        /* Блоки контента */
         .content-section {
-            background: #ffffff; border-radius: 16px; padding: 40px;
-            box-shadow: var(--shadow); margin-bottom: 40px; border: 1px solid rgba(29, 53, 87, 0.05);
+            background: #ffffff; border-radius: 12px; padding: 25px;
+            margin-bottom: 25px; border: 1px solid rgba(29, 53, 87, 0.15);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
         }
         .content-section h2 {
-            font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--navy-blue);
-            margin-top: 0; margin-bottom: 20px; border-left: 4px solid var(--accent-blue); padding-left: 15px;
+            font-size: 1.4rem; color: #1d3557; margin-top: 0; margin-bottom: 15px;
+            border-left: 3px solid #457b9d; padding-left: 10px;
         }
-        .content-section p { font-size: 1.05rem; line-height: 1.8; color: var(--text-dark); }
+        .content-section p { font-size: 0.95rem; line-height: 1.6; }
 
         .btn-navy {
-            background-color: var(--navy-blue); color: #fff; padding: 15px 40px;
-            border: none; border-radius: 8px; font-weight: 600; font-size: 1rem;
-            cursor: pointer; text-decoration: none; display: inline-block; transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(29, 53, 87, 0.2);
+            background-color: #1d3557; color: #fff; padding: 12px 25px;
+            border: none; border-radius: 6px; font-weight: bold; font-size: 0.95rem;
+            cursor: pointer; text-decoration: none; display: inline-block;
+            margin-top: 10px;
         }
-        .btn-navy:hover { background-color: var(--accent-blue); transform: translateY(-2px); }
 
-        /* Отзывы */
         .review-input, .review-textarea {
-            width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid rgba(29, 53, 87, 0.2);
-            border-radius: 6px; font-family: inherit; box-sizing: border-box; background: #fff;
+            width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #1d3557;
+            border-radius: 6px; font-family: inherit; box-sizing: border-box;
         }
-        .review-item { border-bottom: 1px solid #edf2f4; padding: 15px 0; }
+        .review-item { border-bottom: 1px solid #edf2f4; padding: 12px 0; }
         .review-item:last-child { border: none; }
-        .review-name { font-weight: 600; color: var(--navy-blue); margin-bottom: 5px; }
+        .review-name { font-weight: bold; color: #1d3557; font-size: 0.95rem; }
 
-        /* Окно Меню */
-        .menu-container { max-width: 900px; margin: 0 auto; padding: 20px 20px 60px; }
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        
+        .menu-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 15px; }
         .menu-card {
-            background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow);
-            border: 1px solid rgba(29, 53, 87, 0.05); display: flex; flex-direction: column;
+            background: #ffffff; border-radius: 8px; border: 1px solid rgba(29, 53, 87, 0.15); padding: 15px;
         }
-        .menu-card img { width: 100%; height: 220px; object-fit: cover; }
-        .menu-card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .menu-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; gap: 10px; }
-        .menu-card-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--navy-blue); margin: 0; }
-        .menu-card-price { font-weight: 600; color: var(--accent-blue); font-size: 1.1rem; white-space: nowrap; }
-        .menu-card-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin: 0; }
+        .menu-flex { display: flex; justify-content: space-between; align-items: center; }
+        .menu-card-title { font-size: 1.1rem; color: #1d3557; margin: 0; font-weight: bold; }
+        .menu-card-price { color: #457b9d; font-weight: bold; font-size: 1rem; }
+        .menu-card-desc { color: #6c757d; font-size: 0.85rem; margin: 8px 0 0 0; line-height: 1.4; }
 
-        footer { text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.85rem; }
+        footer { text-align: center; padding: 20px; color: #6c757d; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo" onclick="switchWindow('main')">MAMIE</div>
+        <div class="logo">MAMIE</div>
         <nav>
-            <a id="nav-about" class="active" onclick="scrollToSection('about')">О нас</a>
-            <a id="nav-menu" onclick="switchWindow('menu')">Меню</a>
-            <a id="nav-booking" onclick="scrollToSection('booking')">Бронь</a>
-            <a id="nav-reviews" onclick="scrollToSection('reviews')">Отзывы</a>
+            <a onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">О нас</a>
+            <a onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">Меню</a>
+            <a onclick="document.getElementById('booking').scrollIntoView(
+
+
+<div class="review-item">
+                    <div class="review-name">Екатерина Б. ⭐⭐⭐⭐⭐</div>
+                    <p style="margin: 5px 0 0; font-size: 0.9rem; color: #6c757d;">Очаровательное место! Луковый суп просто изумительный. Обслуживание на самом высоком уровне.</p>
+                </div>
+                <div class="review-item">
+                    <div class="review-name">Александр ⭐⭐⭐⭐⭐</div>
+                    <p style="margin: 5px 0 0; font-size: 0.9rem; color: #6c757d;">Заказывали стейк антрекот и тартар — мясо превосходное. Места нужно бронировать сильно заранее.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Разработано для бистро MAMIE. Данные Яндекс Карт.</p>
+    </footer>
+
+    <script>
+        function addLocalReview() {
+            const nameInp = document.getElementById('rev-name');
+            const textInp = document.getElementById('rev-text');
+            const list = document.getElementById('reviews-list');
+
+            if (!nameInp.value.trim() || !textInp.value.trim()) {
+                alert('Пожалуйста, заполните оба поля.');
+                return;
+            }
+
+            const item = document.createElement('div');
+            item.classList.add('review-item');
+            item.innerHTML = `
+                <div class="review-name">${nameInp.value.trim()} ⭐⭐⭐⭐⭐</div>
+                <p style="margin: 5px 0 0; font-size: 0.9rem; color: #6c757d;">${textInp.value.trim()}</p>
+            `;
+
+            list.insertBefore(item, list.firstChild);
+            nameInp.value = '';
+            textInp.value = '';
+            alert('Ваш отзыв успешно добавлен!');
+        }
+    </script>
+</body>
+</html>{b
+
+
+ehavior: 'smooth'})">Бронь</a>
+            <a onclick="document.getElementById('reviews').scrollIntoView({behavior: 'smooth'})">Отзывы</a>
         </nav>
     </header>
 
-    <!-- ГЛАВНОЕ ОКНО -->
-    <div id="window-main" class="page-window active">
-        <div class="main-container">
+    <div class="main-container">
+        
+        <div class="promo-block">
+            <h3>MAMIE БИСТРО</h3>
+            <p>Французский уют и изысканная кухня Lucky Group в Москве</p>
+        </div>
+
+        <!-- О НАС -->
+        <div id="about" class="content-section">
+            <h2>О бистро</h2>
+            <p><strong>Mamie (в переводе — «бабушка»)</strong> — уютное городское бистро на Большой Никитской. Интерьер заведения переносит гостей в атмосферу загородного дома провинциальной Франции с обилием светлого текстиля, винтажной посуды и живых цветов.</p>
+            <p>Концепция меню строится на понятных европейских блюдах с акцентом на классическую французскую гастрономию.</p>
+            <p>📍 <b>Адрес:</b> Москва, Большая Никитская ул., 14, стр. 7<
+ <b>Время работы:</b> Ежедневно с 12:00 до 00:00</p>
+        </div>
+
+        <!-- МЕНЮ -->
+        <div id="menu" class="content-section">
+            <h2>Меню Ресторана</h2>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <div class="menu-flex">
+                        <div class="menu-card-title">Французский луковый суп</div>
+                        <div class="menu-card-price">950 ₽</div>
+                    </div>
+                    <p class="menu-card-desc">Классический наваристый бульон, томленый лук и запеченный хрустящий багет под сыром Грюйер.</p>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-flex">
+                        <div class="menu-card-title">Антрекот с перечным соусом</div>
+                        <div class="menu-card-price">1 850 ₽</div>
+                    </div>
+                    <p class="menu-card-desc">Сочный премиальный стейк из говядины на гриле со сливочно-перечным соусом из зеленого перца.</p>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-flex">
+                        <div class="menu-card-title">Тартар из говядины</div>
+                        <div class="menu-card-price">1 180 ₽</div>
+                    </div>
+                    <p class="menu-card-desc">Рубленая вырезка бычка с каперсами, луком шалот и фирменной пикантной заправкой.</p>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-flex">
+                        <div class="menu-card-title">Салат Нисуаз</div>
+                        <div class="menu-card-price">1 690 ₽</div>
+                    </div>
+                    <p class="menu-card-desc">Знаменитый салат из Ниццы со свежим опаленным тунцом, картофелем и анчоусами.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- БРОНИРОВАНИЕ -->
+        <div id="booking" class="content-section" style="text-align: center;">
+            <h2>Забронировать столик</h2>
+            <p style="color: #6c757d; margin: 0;">Столы в бистро Mamie пользуются огромной популярностью. Пожалуйста, оформляйте ваш визит заранее.</p>
+            <a href="https://yandex.ru" target="_blank" class="btn-navy">Забронировать на Яндекс Картах</a>
+        </div>
+
+        <!-- ОТЗЫВЫ -->
+        <div id="reviews" class="content-section">
+            <h2>Отзывы гостей</h2>
             
-            <!-- Слайдер с реальными фото бистро Mamie -->
-            <div class="slider-wrapper">
-                <button class="slider-btn prev" onclick="moveSlide(-1)">❮</button>
-                <div class="slider" i
+            <div style="margin-bottom: 20px; background: #faf9f5; padding: 15px; border-radius: 6px; border: 1px solid rgba(29, 53, 87, 0.1);">
+                <h3 style="margin-top:0; color: #1d3557; font-size: 0.95rem; margin-bottom: 10px;">Оставить свой отзыв</h3>
+                <input type="text" id="rev-name" class="review-input" placeholder="Ваше имя">
+                <textarea id="rev-text" class="review-textarea" rows="3" placeholder="Напишите ваше мнение..."></textarea>
+                <button class="btn-navy" onclick="addLocalReview()" style="padding: 8px 20px; font-size: 0.85rem; margin-top: 0;">Опубликовать</button>
+            </div>
 
-
-d="slider">
-                    <div class="slide">
-                        <img src="https://yandex.net" alt="Интерьер Mamie 1">
-                        <div class="slide-caption"><h3>Французский Прованс</h3><p>Эстетичный интерьер с винтажной европейской мебелью в самом сердце Москвы.</p></div>
-                    </div>
-                    <div class="slide">
-                        <img src="https://yandex.net" alt="Интерьер Mamie 2">
-                        <div class="slide-caption"><h3>Атмосфера Lucky Group</h3><p>Уникальный ресторанный проект на Большой Никитской с безупречным сервисом.</p></div>
-                    </div>
-                    <div class="slide">
-                        <img src="https://yandex.net" alt="Интерьер Mamie 3">
-                        <div class="slide-caption"><h3>Открытая кухня</h3><p>Наблюдайте за процессом создания кулинарных шедевров французской кухни.</p></div>
-                    </div>
-                    <div class="slide">
-                        <img src="https://yandex.net" alt="Интерьер Mamie 4">
-                        <div class="slide-caption"><h3>Винтажный шарм</h3><p>Уникальная антикварная посуда, привезенная с европейских рынков.</p></div>
-                    </div>
-                    <div class="slide">
-                        <img src="https://yandex.net" alt="Интерьер Mamie 5">;
+            <div id="reviews-list">
