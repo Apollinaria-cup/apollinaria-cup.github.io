@@ -21,6 +21,7 @@
             z-index: 1000;
             text-align: center;
             padding: 15px 0;
+            box-sizing: border-box;
         }
 
         .logo {
@@ -37,10 +38,9 @@
             font-size: 0.85rem; text-transform: uppercase; cursor: pointer;
             padding-bottom: 4px;
         }
-        nav a:hover, nav a.active { color: #457b9d; border-bottom: 2px solid #1d3557; }
+        nav a:hover { color: #457b9d; border-bottom: 2px solid #1d3557; }
 
-        /* Все блоки видны сразу при прокрутке */
-        .main-container { max-width: 600px; margin: 120px auto 40px; padding: 0 20px; }
+        .main-container { max-width: 600px; margin: 140px auto 40px; padding: 0 20px; box-sizing: border-box; }
 
         .promo-block {
             background: linear-gradient(135deg, #1d3557 0%, #457b9d 100%);
@@ -57,19 +57,22 @@
             background: #ffffff; border-radius: 12px; padding: 25px;
             margin-bottom: 25px; border: 1px solid rgba(29, 53, 87, 0.15);
             box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            box-sizing: border-box;
         }
         .content-section h2 {
             font-size: 1.4rem; color: #1d3557; margin-top: 0; margin-bottom: 15px;
             border-left: 3px solid #457b9d; padding-left: 10px;
         }
-        .content-section p { font-size: 0.95rem; line-height: 1.6; }
+        .content-section p { font-size: 0.95rem; line-height: 1.6; margin: 0 0 10px 0; }
+        .content-section p:last-child { margin-bottom: 0; }
 
         .btn-navy {
             background-color: #1d3557; color: #fff; padding: 12px 25px;
             border: none; border-radius: 6px; font-weight: bold; font-size: 0.95rem;
             cursor: pointer; text-decoration: none; display: inline-block;
-            margin-top: 10px;
+            margin-top: 10px; text-align: center;
         }
+        .btn-navy:hover { background-color: #457b9d; }
 
         .review-input, .review-textarea {
             width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #1d3557;
@@ -81,14 +84,14 @@
 
         .menu-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 15px; }
         .menu-card {
-            background: #ffffff; border-radius: 8px; border: 1px solid rgba(29, 53, 87, 0.15); padding: 15px;
+            background: #ffffff; border-radius: 8px; border: 1px solid rgba(29, 53, 87, 0.15); padding: 15px; box-sizing: border-box;
         }
-        .menu-flex { display: flex; justify-content: space-between; align-items: center; }
+        .menu-flex { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
         .menu-card-title { font-size: 1.1rem; color: #1d3557; margin: 0; font-weight: bold; }
-        .menu-card-price { color: #457b9d; font-weight: bold; font-size: 1rem; }
+        .menu-card-price { color: #457b9d; font-weight: bold; font-size: 1rem; white-space: nowrap; }
         .menu-card-desc { color: #6c757d; font-size: 0.85rem; margin: 8px 0 0 0; line-height: 1.4; }
 
-        footer { text-align: center; padding: 20px; color: #6c757d; font-size: 0.8rem; }
+        footer { text-align: center; padding: 20px; color: #6c757d; font-size: 0.8rem; margin-top: 40px; }
     </style>
 </head>
 <body>
@@ -96,57 +99,12 @@
     <header>
         <div class="logo">MAMIE</div>
         <nav>
-            <a onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">О нас</a>
+            <a
+
+
+"document.getElementById('about').scrollIntoView({behavior: 'smooth'})">О нас</a>
             <a onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">Меню</a>
-            <a onclick="document.getElementById('booking').scrollIntoView(
-
-
-<div class="review-item">
-                    <div class="review-name">Екатерина Б. ⭐⭐⭐⭐⭐</div>
-                    <p style="margin: 5px 0 0; font-size: 0.9rem; color: #6c757d;">Очаровательное место! Луковый суп просто изумительный. Обслуживание на самом высоком уровне.</p>
-                </div>
-                <div class="review-item">
-                    <div class="review-name">Александр ⭐⭐⭐⭐⭐</div>
-                    <p style="margin: 5px 0 0; font-size: 0.9rem; color: #6c757d;">Заказывали стейк антрекот и тартар — мясо превосходное. Места нужно бронировать сильно заранее.</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <footer>
-        <p>© 2026 Разработано для бистро MAMIE. Данные Яндекс Карт.</p>
-    </footer>
-
-    <script>
-        function addLocalReview() {
-            const nameInp = document.getElementById('rev-name');
-            const textInp = document.getElementById('rev-text');
-            const list = document.getElementById('reviews-list');
-
-            if (!nameInp.value.trim() || !textInp.value.trim()) {
-                alert('Пожалуйста, заполните оба поля.');
-                return;
-            }
-
-            const item = document.createElement('div');
-            item.classList.add('review-item');
-            item.innerHTML = `
-                <div class="review-name">${nameInp.value.trim()} ⭐⭐⭐⭐⭐</div>
-                <p style="margin: 5px 0 0; font-size: 0.9rem; color: #6c757d;">${textInp.value.trim()}</p>
-            `;
-
-            list.insertBefore(item, list.firstChild);
-            nameInp.value = '';
-            textInp.value = '';
-            alert('Ваш отзыв успешно добавлен!');
-        }
-    </script>
-</body>
-</html>{b
-
-
-ehavior: 'smooth'})">Бронь</a>
+            <a onclick="document.getElementById('booking').scrollIntoView({behavior: 'smooth'})">Бронь</a>
             <a onclick="document.getElementById('reviews').scrollIntoView({behavior: 'smooth'})">Отзывы</a>
         </nav>
     </header>
@@ -194,7 +152,7 @@ ehavior: 'smooth'})">Бронь</a>
                 </div>
                 <div class="menu-card">
                     <div class="menu-flex">
-                        <div class="menu-card-title">Салат Нисуаз</div>
+                        <div class="menu-card-title">Salade Niçoise</div>
                         <div class="menu-card-price">1 690 ₽</div>
                     </div>
                     <p class="menu-card-desc">Знаменитый салат из Ниццы со свежим опаленным тунцом, картофелем и анчоусами.</p>
@@ -206,7 +164,9 @@ ehavior: 'smooth'})">Бронь</a>
         <div id="booking" class="content-section" style="text-align: center;">
             <h2>Забронировать столик</h2>
             <p style="color: #6c757d; margin: 0;">Столы в бистро Mamie пользуются огромной популярностью. Пожалуйста, оформляйте ваш визит заранее.</p>
-            <a href="https://yandex.ru" target="_blank" class="btn-navy">Забронировать на Яндекс Картах</a>
+            <div style="text-align: center;">
+                <a href="https://yandex.ru" target="_blank" class="btn-navy">Забронировать на Яндекс Картах</a>
+            </div>
         </div>
 
         <!-- ОТЗЫВЫ -->
@@ -216,8 +176,45 @@ ehavior: 'smooth'})">Бронь</a>
             <div style="margin-bottom: 20px; background: #faf9f5; padding: 15px; border-radius: 6px; border: 1px solid rgba(29, 53, 87, 0.1);">
                 <h3 style="margin-top:0; color: #1d3557; font-size: 0.95rem; margin-bottom: 10px;">Оставить свой отзыв</h3>
                 <input type="text" id="rev-name" class="review-input" placeholder="Ваше имя">
-                <textarea id="rev-text" class="review-textarea" rows="3" placeholder="Напишите ваше мнение..."></textarea>
+Статьи, новости и видео от популярных блогеров и СМИ | Будь в теме — будь в Дзене
+Статьи, новости и видео от популярных блогеров и СМИ | Будь в теме — будь в Дзене
+dzen.ru
+
+
+<textarea id="rev-text" class="review-textarea" rows="3" placeholder="Напишите ваше мнение..."></textarea>
                 <button class="btn-navy" onclick="addLocalReview()" style="padding: 8px 20px; font-size: 0.85rem; margin-top: 0;">Опубликовать</button>
             </div>
 
             <div id="reviews-list">
+                <div class="review-item">
+                    <div class="review-name">Екатерина Б. ⭐⭐⭐⭐⭐</div>
+                    <p style="margin: 5px 0 0; font-size: 0.9rem; color: #6c757d;">Очаровательное место! Луковый суп просто изумительный. Обслуживание на самом высоком уровне.</p>
+                </div>
+                <div class="review-item">
+                    <div class="review-name">Александр ⭐⭐⭐⭐⭐</div>
+                    <p style="margin: 5px 0 0; font-size: 0.9rem; color: #6c757d;">Заказывали стейк антрекот и тартар — мясо превосходное. Места нужно бронировать сильно заранее.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Разработано для бистро MAMIE. Данные Яндекс Карт.</p>
+    </footer>
+
+    <script>
+        function addLocalReview() {
+            const nameInp = document.getElementById('rev-name');
+            const textInp = document.getElementById('rev-text');
+            const list = document.getElementById('reviews-list');
+
+            if (!nameInp.value.trim() || !textInp.value.trim()) {
+                alert('Пожалуйста, заполните оба поля.');
+                return;
+            }
+
+            const item = document.createElement('div');
+            item.classList.add('review-item');
+            item.innerHTML = `
+                <div class="review-name">${nameInp.value.trim()} ⭐⭐⭐⭐⭐</div> onclick=
