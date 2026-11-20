@@ -40,16 +40,17 @@
         }
         nav a:hover { color: #457b9d; border-bottom: 2px solid #1d3557; }
 
-        .main-container { max-width: 600px; margin: 140px auto 40px; padding: 0 20px; box-sizing: border-box; }
+        .main-container { max-width: 600px; margin: 135px auto 40px; padding: 0 20px; box-sizing: border-box; }
 
-        /* Главное фото интерьера */
-        .main-restaurant-photo {
+        /* Фотографии, загруженные в репозиторий */
+        .site-photo {
             width: 100%;
-            height: 250px;
-            object-fit: cover;
+            height: auto;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            display: block;
+            border: 1px solid rgba(29, 53, 87, 0.15);
         }
 
         .content-section {
@@ -62,44 +63,92 @@
             font-size: 1.4rem; color: #1d3557; margin-top: 0; margin-bottom: 15px;
             border-left: 3px solid #457b9d; padding-left: 10px;
         }
-        .content-section p { font-size: 0.95rem; line-height: 1.6; margin: 0 0 10px 0; }
+        .content-section p { font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px 0; }
         .content-section p:last-child { margin-bottom: 0; }
 
+        /* Кнопки */
         .btn-navy {
-            background-color: #1d3557; color: #fff; padding: 12px 25px;
-            border: none; border-radius: 6px; font-weight: bold; font-size: 0.95rem;
+            background-color: #1d3557; color: #fff; padding: 13px 25px;
+            border: none; border-radius: 8px; font-weight: bold; font-size: 0.95rem;
             cursor: pointer; text-decoration: none; display: inline-block;
-            margin-top: 10px; text-align: center;
+            text-align: center; box-sizing: border-box; width: 100%; transition: 0.2s;
         }
         .btn-navy:hover { background-color: #457b9d; }
 
-        .review-input, .review-textarea {
-            width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #1d3557;
-            border-radius: 6px; font-family: inherit; box-sizing: border-box;
+        .btn-yandex {
+            background-color: #fce000; color: #21201f; padding: 14px 25px;
+            border: none; border-radius: 8px; font-weight: bold; font-size: 1rem;
+            cursor: pointer; text-decoration: none; display: block;
+            text-align: center; box-sizing: border-box; width: 100%;
+            box-shadow: 0 4px 10px rgba(252, 224, 0, 0.3);
         }
-        .review-item { border-bottom: 1px solid #edf2f4; padding: 12px 0; }
+
+        .messenger-buttons {
+            display: flex; gap: 10px; margin-top: 15px;
+        }
+        .btn-tg {
+            flex: 1; background-color: #24A1DE; color: #fff; padding: 12px;
+            border-radius: 8px; text-decoration: none; font-weight: bold;
+            font-size: 0.9rem; text-align: center;
+        }
+        .btn-wa {
+            flex: 1; background-color: #25D366; color: #fff; padding: 12px;
+            border-radius: 8px; text-decoration: none; font-weight: bold;
+            font-size: 0.9rem; text-align: center;
+        }
+
+        /* Поля ввода для брони и отзывов */
+        .form-input, .form-textarea {
+            width: 100%; padding: 11px; margin-bottom: 10px; border: 1px solid rgba(29, 53, 87, 0.3);
+            border-radius: 6px; font-family: inherit; font-size: 0.95rem; box-sizing: border-box;
+            background-color: #fcfbf7;
+        }
+        .form-row { display: flex; gap: 10px;
+
+
+lank" class="btn-wa">WhatsApp</a>
+            </div>
+        </div>
+
+        <!-- ОТЗЫВЫ -->
+        <div id="reviews" class="content-section">
+            <h2>Отзывы гостей</h2>
+            
+            <div style="margin-bottom: 20px; background: #faf9f5; padding: 15px; border-radius: 6px; border: 1px solid rgba(29, 53, 87, 0.1);">
+                <h3 style="margin-top:0; color: #1d3557; font-size: 0.95rem; margin-bottom: 10px;">Оставить свой отзыв</h3>
+                <input type="text" id="rev-name" class="form-input" placeholder="Ваше имя">
+                <textarea id="rev-text" class="form-textarea" rows="3" placeholder="Напишите ваше мнение..."></textarea>
+                <button class="btn-navy" onclick="addLocalReview()" style="padding: 10px; font-size: 0.9rem;">Опубликовать отзыв</button>
+            </div>
+
+            <div id="reviews-list">
+                <div class="review-item">
+                    <div class="review-name">Екатерина Б. ⭐⭐⭐⭐⭐</div>
+                    <p style="margin: 5px 0 0; font-size: 0.9rem; color: #6c757d;">Очаровательное место! Луковый суп просто изумительный. Обслуживание на самом высоком уровне.</p>
+                </div>
+                <div class="review-item">
+                    <div class="review-name">Александр ⭐⭐⭐⭐⭐</div>
+                    <p style="margin: 5px 0 0; font-size: 0.9rem; color: #6c757d;">Заказывали стейк антрекот и тартар — мясо превосходное. Места нужно бронировать сильно заранее.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Бистро MAMIE (Москва, Большая Никитская, 14).</p>
+    </footer>
+
+    <script>
+        // Скрипт бронирования внутри сайта
+        function submitBooking() {}
+
+
+.review-item { border-bottom: 1px solid #edf2f4; padding: 12px 0; }
         .review-item:last-child { border: none; }
         .review-name { font-weight: bold; color: #1d3557; font-size: 0.95rem; }
 
-        /* Стили для карточек меню с фото */
-        .menu-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 15px; }
-        .menu-card {
-            background: #ffffff; border-radius: 10px; border: 1px solid rgba(29, 53, 87, 0.15); 
-            overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.02); box-sizing: border-box;
-        }
-        .menu-card img {
-            width: 100%; height: 180px; object-fit: cover; display: block;
-        }
-        .menu-card-body { padding: 15px; }
-        .menu-flex { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-        .menu-card-title { font-size: 1.1rem; color: #1d3557; margin: 0; font-weight: bold; }
-        .menu-card-price { color: #457b9d; font-weight: bold; font-size: 1rem; white-space: nowrap; }
-        .menu-card-desc { color: #6c757d; font-size: 0.85rem; margin: 8px 0 0 0; line-height: 1.4; }
-
-        footer { text-align: center; padding: 20px; color: #6c757d; font-size: 0.8rem;
-
-
-in-top: 40px; }
+        footer { text-align: center; padding: 20px; color: #6c757d; font-size: 0.8rem; }
     </style>
 </head>
 <body>
@@ -116,9 +165,9 @@ in-top: 40px; }
 
     <div class="main-container">
         
-        <!-- ГЛАВНОЕ ФОТО ИНТЕРЬЕРА РЕСТОРАНА -->
-        <!-- Замените адрес в src="..." на вашу прямую ссылку на фото интерьера -->
-        <img class="main-restaurant-photo" src="https://unsplash.com" alt="Интерьер бистро Mamie">
+        <!-- ГЛАВНОЕ ФОТО ИНТЕРЬЕРА (Загрузите файл interior.jpg в репозиторий) -->
+        <!-- Если не загружали, просто удалите строчку ниже -->
+        <img class="site-photo" src="interior.jpg" alt="Интерьер бистро MAMIE" onerror="this.style.display='none'">
 
         <!-- О НАС -->
         <div id="about" class="content-section">
@@ -129,82 +178,38 @@ in-top: 40px; }
  <b>Время работы:</b> Ежедневно с 12:00 до 00:00</p>
         </div>
 
-        <!-- МЕНЮ С ФОТОГРАФИЯМИ БЛЮД -->
+        <!-- МЕНЮ (ВАШЕ ФОТО + КНОПКА ЯНДЕКС ЕДЫ) -->
         <div id="menu" class="content-section">
-            <h2>Меню Ресторана</h2>
-            <div class="menu-grid">
-                
-                <!-- Блюдо 1 -->
-                <div class="menu-card">
-                    <!-- Замените src="..." на вашу прямую ссылку фото супа -->
-                    <img src="https://unsplash.com" alt="Луковый суп">
-                    <div class="menu-card-body">
-                        <div class="menu-flex">
-                            <div class="menu-card-title">Французский луковый суп</div>
-                            <div class="menu-card-price">950 ₽</div>
-                        </div>
-                        <p class="menu-card-desc">Классический наваристый бульон, томленый лук и запеченный хрустящий багет под сыром Грюйер.</p>
-                    </div>
-                </div>
-
-                <!-- Блюдо 2 -->
-                <div class="menu-card">
-                    <!-- Замените src="..." на вашу прямую ссылку фото стейка -->
-                    <img src="https://unsplash.com" alt="Антрекот">
-                    <div class="menu-card-body">
-                        <div class="menu-flex">
-                            <div class="menu-card-title">Антрекот с перечным соусом</div>
-                            <div class="menu-card-price">1 850 ₽</div>
-                        </div>
-                        <p class="menu-card-desc">Сочный премиальный стейк из говядины на гриле со сливочно-перечным соусом из зеленого перца.</p>
-                    </div>
-                </div>
-
-                <!-- Блюдо 3 -->
-                <div class="menu-card">
-                    <!-- Замените src="..." на вашу прямую ссылку фото тартара -->
-                    <img src="https://unsplash.com" alt="Тартар">
-                    <div class="menu-card-body">
-                        <div class="menu-flex">
-                            <div class="menu-card-title">Тартар из говядины</div>
-                            <div class="menu-card-price">1 180 ₽</div>
-                        </div>
-                        <p class="menu-card-desc">Рубленая вырезка бычка с каперсами, луком шалот и фирменной пикантной заправкой.</p>
-                    </div>
-                </div>
-
-                <!-- Блюдо 4 -->
-                <div class="menu-card">
-                    <!-- Замените src="..." на вашу прямую ссылку фото салата -->
-                    <img src="https://unsplash.com" alt="Салат Нисуаз">
-                    <div class="menu-card-body">
-                        <div class="menu-flex">
-
-
-<div class="menu-card-title">Salade Niçoise</div>
-                            <div class="menu-card-price">1 690 ₽</div>
-                        </div>
-                        <p class="menu-card-desc">Знаменитый салат из Ниццы со свежим опаленным тунцом, картофелем и анчоусами.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- БРОНИРОВАНИЕ -->
-        <div id="booking" class="content-section" style="text-align: center;">
-            <h2>Забронировать столик</h2>
-            <p style="color: #6c757d; margin: 0;">Столы в бистро Mamie пользуются огромной популярностью. Пожалуйста, оформляйте ваш визит заранее.</p>
-            <div style="text-align: center;">
-                <a href="https://yandex.ru" target="_blank" class="btn-navy">Забронировать на Яндекс Картах</a>
-            </div>
-        </div>
-
-        <!-- ОТЗЫВЫ -->
-        <div id="reviews" class="content-section">
-            <h2>Отзывы гостей</h2>
+            <h2>Меню Бистро</h2>
+            <p style="font-size: 0.85rem; color: #6c757d; margin-bottom: 15px;">Нажмите на фото меню или приблизьте его, чтобы рассмотреть позиции и цены:</p>
             
-            <div style="margin-bottom: 20px; background: #faf9f5; padding: 15px; border-radius: 6px; border: 1px solid rgba(29, 53, 87, 0.1);">
-                <h3 style="margin-top:0; color: #1d3557; font-size: 0.95rem; margin-bottom: 10px;">Оставить свой отзыв</h3>
-                <input type="text" id="rev-name" class="review-input" placeholder="Ваше имя">
-                <textarea id="rev-text" class="review-textarea" rows="3" placeholder="Напишите ваше мнение..."></textarea> marg
+            <!-- Ваше фото меню (Загрузите файл с именем menu.jpg в репозиторий!) -->
+            <img class="site-photo" src="menu.jpg" alt="Меню бистро MAMIE">
+
+            <!-- Замаскированная ссылка на Яндекс Еду -->
+            <a href="https://eda.yandex.ru/restaurant/mamie?utm_campaign=eda_superapp_maps_iphone&utm_medium=referral&utm_source=rst_shared_link" target="_blank" class="btn-yandex">
+                Заказать в Яндекс Еда
+            </a>
+        </div>
+
+        <!-- БРОНИРОВАНИЕ (ВНУТРИ САЙТА + МЕССЕНДЖЕРЫ) -->
+        <div id="booking" class="content-section">
+            <h2>Забронировать столик</h2>
+            <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 15px;">Оставьте заявку на стол прямо здесь, и хостес свяжется с вами для подтверждения:</p>
+            
+            <div style="background: #faf9f5; padding: 15px; border-radius: 8px; border: 1px solid rgba(29, 53, 87, 0.1);">
+                <input type="text" id="book-name" class="form-input" placeholder="Ваше имя">
+                <input type="tel" id="book-phone" class="form-input" placeholder="Номер телефона (+7...)">
+                <div class="form-row">
+                    <input type="date" id="book-date" class="form-input">
+                    <input type="time" id="book-time" class="form-input">
+                </div>
+                <input type="number" id="book-guests" class="form-input" placeholder="Количество гостей (например, 2)" min="1" max="20">
+                <button class="btn-navy" onclick="submitBooking()">Забронировать стол</button>
+            </div>
+
+            <p style="text-align: center; color: #6c757d; font-size: 0.85rem; margin: 18px 0 5px 0;">Или напишите нам напрямую в мессенджер:</p>
+            <div class="messenger-buttons">
+                <!-- Замените ссылки ниже на реальные контакты бистро при необходимости -->
+                <a href="https://t.me" target="_blank" class="btn-tg">Telegram</a>
+                <a href="https://wa.me" target="_b
