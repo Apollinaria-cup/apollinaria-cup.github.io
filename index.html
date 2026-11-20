@@ -42,7 +42,32 @@
 
         .main-container { max-width: 600px; margin: 135px auto 40px; padding: 0 20px; box-sizing: border-box; }
 
-        /* Фотографии, загруженные в репозиторий */
+        /* Слайдер в разделе О нас */
+        .slider-box {
+            position: relative;
+            width: 100%;
+            height: 260px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 18px;
+            background-color: #edf2f4;
+            border: 1px solid rgba(29, 53, 87, 0.15);
+        }
+        .slide-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+        .slide-img.active {
+            display: block;
+            animation: fade 0.6s ease-in-out;
+        }
+        @keyframes fade {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+
         .site-photo {
             width: 100%;
             height: auto;
@@ -84,67 +109,31 @@
         }
 
         .messenger-buttons {
-            display: flex; gap: 10px; margin-top: 15px;
+            display: flex; gap: 10px; margin-top: 10px;
         }
         .btn-tg {
-            flex: 1; background-color: #24A1DE; color: #fff; padding: 12px;
-            border-radius: 8px; text-decoration: none; font-weight: bold;
-            font-size: 0.9rem; text-align: center;
+            flex: 1; background-color: #24A1DE; color: #fff; padding: 13px 10px;
+            border: none; border-radius: 8px; font-weight: bold;
+            font-size: 0
+
+
+; text-align: center; cursor: pointer;
         }
         .btn-wa {
-            flex: 1; background-color: #25D366; color: #fff; padding: 12px;
-            border-radius: 8px; text-decoration: none; font-weight: bold;
-            font-size: 0.9rem; text-align: center;
+            flex: 1; background-color: #25D366; color: #fff; padding: 13px 10px;
+            border: none; border-radius: 8px; font-weight: bold;
+            font-size: 0.9rem; text-align: center; cursor: pointer;
         }
 
-        /* Поля ввода для брони и отзывов */
+        /* Поля ввода */
         .form-input, .form-textarea {
             width: 100%; padding: 11px; margin-bottom: 10px; border: 1px solid rgba(29, 53, 87, 0.3);
             border-radius: 6px; font-family: inherit; font-size: 0.95rem; box-sizing: border-box;
             background-color: #fcfbf7;
         }
-        .form-row { display: flex; gap: 10px;
+        .form-row { display: flex; gap: 10px; }
 
-
-lank" class="btn-wa">WhatsApp</a>
-            </div>
-        </div>
-
-        <!-- ОТЗЫВЫ -->
-        <div id="reviews" class="content-section">
-            <h2>Отзывы гостей</h2>
-            
-            <div style="margin-bottom: 20px; background: #faf9f5; padding: 15px; border-radius: 6px; border: 1px solid rgba(29, 53, 87, 0.1);">
-                <h3 style="margin-top:0; color: #1d3557; font-size: 0.95rem; margin-bottom: 10px;">Оставить свой отзыв</h3>
-                <input type="text" id="rev-name" class="form-input" placeholder="Ваше имя">
-                <textarea id="rev-text" class="form-textarea" rows="3" placeholder="Напишите ваше мнение..."></textarea>
-                <button class="btn-navy" onclick="addLocalReview()" style="padding: 10px; font-size: 0.9rem;">Опубликовать отзыв</button>
-            </div>
-
-            <div id="reviews-list">
-                <div class="review-item">
-                    <div class="review-name">Екатерина Б. ⭐⭐⭐⭐⭐</div>
-                    <p style="margin: 5px 0 0; font-size: 0.9rem; color: #6c757d;">Очаровательное место! Луковый суп просто изумительный. Обслуживание на самом высоком уровне.</p>
-                </div>
-                <div class="review-item">
-                    <div class="review-name">Александр ⭐⭐⭐⭐⭐</div>
-                    <p style="margin: 5px 0 0; font-size: 0.9rem; color: #6c757d;">Заказывали стейк антрекот и тартар — мясо превосходное. Места нужно бронировать сильно заранее.</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <footer>
-        <p>© 2026 Бистро MAMIE (Москва, Большая Никитская, 14).</p>
-    </footer>
-
-    <script>
-        // Скрипт бронирования внутри сайта
-        function submitBooking() {}
-
-
-.review-item { border-bottom: 1px solid #edf2f4; padding: 12px 0; }
+        .review-item { border-bottom: 1px solid #edf2f4; padding: 12px 0; }
         .review-item:last-child { border: none; }
         .review-name { font-weight: bold; color: #1d3557; font-size: 0.95rem; }
 
@@ -165,37 +154,39 @@ lank" class="btn-wa">WhatsApp</a>
 
     <div class="main-container">
         
-        <!-- ГЛАВНОЕ ФОТО ИНТЕРЬЕРА (Загрузите файл interior.jpg в репозиторий) -->
-        <!-- Если не загружали, просто удалите строчку ниже -->
-        <img class="site-photo" src="interior.jpg" alt="Интерьер бистро MAMIE" onerror="this.style.display='none'">
-
-        <!-- О НАС -->
+        <!-- О НАС С АВТО-СЛАЙДЕРОМ -->
         <div id="about" class="content-section">
             <h2>О бистро</h2>
+            
+            <!-- Слайдер фото (Загрузите photo1.jpg, photo2.jpg, photo3.jpg в репозиторий) -->
+            <div class="slider-box">
+                <img class="slide-img active" src="photo1.jpg" alt="Интерьер MAMIE 1">
+                <img class="slide-img" src="photo2.jpg" alt="Интерьер MAMIE 2">
+                <img class="slide-img" src="photo3.jpg" alt="Интерьер MAMIE 3">
+            </div>
+
             <p><strong>Mamie (в переводе — «бабушка»)</strong> — уютное городское бистро на Большой Никитской. Интерьер заведения переносит гостей в атмосферу загородного дома провинциальной Франции с обилием светлого текстиля, винтажной посуды и живых цветов.</p>
             <p>Концепция меню строится на понятных европейских блюдах с акцентом на классическую французскую гастрономию.</p>
             <p>📍 <b>Адрес:</b> Москва, Большая Никитская ул., 14, стр. 7<
  <b>Время работы:</b> Ежедневно с 12:00 до 00:00</p>
         </div>
 
-        <!-- МЕНЮ (ВАШЕ ФОТО + КНОПКА ЯНДЕКС ЕДЫ) -->
+        <!-- МЕНЮ -->
         <div id="menu" class="content-section">
             <h2>Меню Бистро</h2>
             <p style="font-size: 0.85rem; color: #6c757d; margin-bottom: 15px;">Нажмите на фото меню или приблизьте его, чтобы рассмотреть позиции и цены:</p>
             
-            <!-- Ваше фото меню (Загрузите файл с именем menu.jpg в репозиторий!) -->
             <img class="site-photo" src="menu.jpg" alt="Меню бистро MAMIE">
 
-            <!-- Замаскированная ссылка на Яндекс Еду -->
-            <a href="https://eda.yandex.ru/restaurant/mamie?utm_campaign=eda_superapp_maps_iphone&utm_medium=referral&utm_source=rst_shared_link" target="_blank" class="btn-yandex">
+            <a href="https://yandex.ru" target="_blank" class="btn-yandex">
                 Заказать в Яндекс Еда
             </a>
         </div>
 
-        <!-- БРОНИРОВАНИЕ (ВНУТРИ САЙТА + МЕССЕНДЖЕРЫ) -->
+        <!-- БРОНИРОВАНИЕ С ПЕРЕХОДОМ В МЕССЕНДЖЕРЫ -->
         <div id="booking" class="content-section">
             <h2>Забронировать столик</h2>
-            <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 15px;">Оставьте заявку на стол прямо здесь, и хостес свяжется с вами для подтверждения:</p>
+            <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 15px;">Заполните данные, выберите удобный мессенджер, и готовое сообщение с вашей бронью откроется автоматически:</p>
             
             <div style="background: #faf9f5; padding: 15px; border-radius: 8px; border: 1px solid rgba(29, 53, 87, 0.1);">
                 <input type="text" id="book-name" class="form-input" placeholder="Ваше имя">
@@ -204,12 +195,36 @@ lank" class="btn-wa">WhatsApp</a>
                     <input type="date" id="book-date" class="form-input">
                     <input type="time" id="book-time" class="form-input">
                 </div>
-                <input type="number" id="book-guests" class="form-input" placeholder="Количество гостей (например, 2)" min="1" max="20">
-                <button class="btn-navy" onclick="submitBooking()">Забронировать стол</button>
+                <input type="number" id="book-guests" class="form-input" placeholder="Количество гостей (напр
+Статьи, новости и видео от популярных блогеров и СМИ | Будь в теме — будь в Дзене
+Статьи, новости и видео от популярных блогеров и СМИ | Будь в теме — будь в Дзене
+dzen.ru
+
+
+имер, 2)" min="1" max="20">
+                
+                <div class="messenger-buttons">
+                    <button class="btn-tg" onclick="sendToMessenger('tg')">Бронь через Telegram</button>
+                    <button class="btn-wa" onclick="sendToMessenger('wa')">Бронь через WhatsApp</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ОТЗЫВЫ -->
+        <div id="reviews" class="content-section">
+            <h2>Отзывы гостей</h2>
+            
+            <div style="margin-bottom: 20px; background: #faf9f5; padding: 15px; border-radius: 6px; border: 1px solid rgba(29, 53, 87, 0.1);">
+                <h3 style="margin-top:0; color: #1d3557; font-size: 0.95rem; margin-bottom: 10px;">Оставить свой отзыв</h3>
+                <input type="text" id="rev-name" class="form-input" placeholder="Ваше имя">
+                <textarea id="rev-text" class="form-textarea" rows="3" placeholder="Напишите ваше мнение..."></textarea>
+                <button class="btn-navy" onclick="addLocalReview()" style="padding: 10px; font-size: 0.9rem;">Опубликовать отзыв</button>
             </div>
 
-            <p style="text-align: center; color: #6c757d; font-size: 0.85rem; margin: 18px 0 5px 0;">Или напишите нам напрямую в мессенджер:</p>
-            <div class="messenger-buttons">
-                <!-- Замените ссылки ниже на реальные контакты бистро при необходимости -->
-                <a href="https://t.me" target="_blank" class="btn-tg">Telegram</a>
-                <a href="https://wa.me" target="_b
+            <div id="reviews-list">
+                <div class="review-item">
+                    <div class="review-name">Екатерина Б. ⭐⭐⭐⭐⭐</div>
+                    <p style="margin: 5px 0 0; font-size: 0.9rem; color: #6c757d;">Очаровательное место! Луковый суп просто изумительный. Обслуживание на самом высоком уровне.</p>
+                </div>
+                <div class="review-item">
+                    <div class="review-name">Александр ⭐⭐⭐⭐⭐</div>.9rem
